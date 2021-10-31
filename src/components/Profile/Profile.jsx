@@ -1,4 +1,5 @@
 import style from './Profile.module.css';
+import PropTypes from 'prop-types';
 
 // Компонент должен принимать несколько пропсов с информацией о пользователе:
 // name — имя пользователя
@@ -37,6 +38,14 @@ const Profile = ({ name, tag, location, avatar, stats }) => {
             </ul>
         </div>
     );
+};
+
+Profile.propTypes = {
+    name: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    stats: PropTypes.objectOf(PropTypes.number),
 };
 
 export default Profile;

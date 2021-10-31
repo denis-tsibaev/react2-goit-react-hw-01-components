@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import style from './Statistics.module.css';
+import PropTypes from 'prop-types';
 
 const Statistics = ({ title, stats }) => {
     const randomColor = () => '#' + Math.random().toString(16).substr(-6);
@@ -24,6 +25,11 @@ const Statistics = ({ title, stats }) => {
             </ul>
         </section>
     );
+};
+
+Statistics.propTypes = {
+    title: PropTypes.string,
+    stats: PropTypes.array.isRequired,
 };
 
 export default Statistics;
