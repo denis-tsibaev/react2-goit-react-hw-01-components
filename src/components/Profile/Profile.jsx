@@ -1,5 +1,5 @@
-import style from './Profile.module.css';
 import PropTypes from 'prop-types';
+import style from './Profile.module.css';
 
 // Компонент должен принимать несколько пропсов с информацией о пользователе:
 // name — имя пользователя
@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 // stats — объект с информацией об активности
 
 const Profile = ({ name, tag, location, avatar, stats }) => {
+    const { followers, views, likes } = stats;
     return (
         <div className={style.profile}>
             <div className="description">
@@ -24,16 +25,16 @@ const Profile = ({ name, tag, location, avatar, stats }) => {
 
             <ul className={style.stats}>
                 <li>
-                    <span className={style.label}>Followers</span>
-                    <span className={style.quantity}>{stats.followers}</span>
+                    <span className={style.label}>Followers: </span>
+                    <span className={style.quantity}>{followers}</span>
                 </li>
                 <li>
-                    <span className={style.label}>Views</span>
-                    <span className={style.quantity}>{stats.views}</span>
+                    <span className={style.label}>Views: </span>
+                    <span className={style.quantity}>{views}</span>
                 </li>
                 <li>
-                    <span className={style.label}>Likes</span>
-                    <span className={style.quantity}>{stats.likes}</span>
+                    <span className={style.label}>Likes: </span>
+                    <span className={style.quantity}>{likes}</span>
                 </li>
             </ul>
         </div>
@@ -45,7 +46,7 @@ Profile.propTypes = {
     tag: PropTypes.string.isRequired,
     location: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,
-    stats: PropTypes.objectOf(PropTypes.number),
+    stats: PropTypes.objectOf(PropTypes.number.isRequired),
 };
 
 export default Profile;
